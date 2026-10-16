@@ -4,7 +4,9 @@ import sys
 from PIL import Image
 
 here = pathlib.Path(__file__).resolve().parent.parent
-src = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else here.parent.parent.parent / 'ecash-cat-site' / 'assets' / 'logo.png'
+if len(sys.argv) != 2:
+    sys.exit('usage: python3 scripts/icons.py <square source image>')
+src = pathlib.Path(sys.argv[1])
 logo = Image.open(src).convert('RGBA')
 for size in (16, 32, 48, 128):
     out = here / 'static' / 'icons' / f'icon-{size}.png'

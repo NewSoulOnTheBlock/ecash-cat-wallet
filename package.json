@@ -2,15 +2,17 @@
   "name": "ecash-cat-wallet",
   "private": true,
   "version": "0.1.0",
-  "description": "eCash Cat Wallet: a Chrome extension wallet for ECX that speaks eCash Connect.",
+  "description": "eCash Cat Wallet: a Chrome (Manifest V3) wallet for eCash (ECX) that speaks eCash Connect.",
   "type": "module",
   "scripts": {
     "build": "bun build.ts",
+    "zip": "bun build.ts && bun scripts/zip.ts",
+    "typecheck": "tsc --noEmit",
     "test:e2e": "bun test/devnet.e2e.ts",
     "test:ui": "bun test/ui.e2e.ts"
   },
   "dependencies": {
-    "@ecash-connect/core": "workspace:*",
+    "@ecash-connect/core": "^0.1.0",
     "@noble/curves": "2.4.0",
     "@noble/hashes": "2.4.0",
     "@scure/base": "2.4.0",
@@ -20,7 +22,14 @@
     "valibot": "1.2.0"
   },
   "devDependencies": {
+    "@types/bun": "1.3.5",
     "@types/chrome": "0.3.4",
-    "playwright-core": "1.63.0"
+    "playwright-core": "1.63.0",
+    "typescript": "5.9.2"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewSoulOnTheBlock/ecash-cat-wallet.git"
   }
 }
